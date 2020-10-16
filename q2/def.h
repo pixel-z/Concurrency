@@ -17,7 +17,7 @@ typedef struct Company{
     int id;
     double prob;    // prob of success of vaccine
     int ready;      // 1 to start new production batch
-    // int size;       // size of batch
+    int batches;       // no of batches company makes (changes every time)
     pthread_t tid;
     pthread_mutex_t mutex;
 } Company;
