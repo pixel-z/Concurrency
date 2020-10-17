@@ -48,12 +48,12 @@ int main()
         pthread_create(&zones[i].tid,NULL,initZone,&zones[i]);
     }
     // Student
-    // for (int i = 0; i < studentCount; i++)
-    // {
-    //     students[i].id = i+1;
-    //     students[i].vacc_count = 0;
-    //     pthread_create(&students[i].tid,NULL,initStud,&students[i]);
-    // }
+    for (int i = 0; i < studentCount; i++)
+    {
+        students[i].id = i+1;
+        students[i].vacc_count = 0;
+        pthread_create(&students[i].tid,NULL,initStud,&students[i]);
+    }
     
 
 
@@ -62,8 +62,10 @@ int main()
         pthread_join(students[i].tid,NULL);
 
     /********************** remove this **********************/
-    for (int i = 0; i < pharmaCount; i++)
-        pthread_join(companies[i].tid,NULL);
+    // for (int i = 0; i < pharmaCount; i++)
+    //     pthread_join(companies[i].tid,NULL);
+    // for (int i = 0; i < vaccCount; i++)
+    //     pthread_join(zones[i].tid,NULL);
 
     printf("\nSimulation Over\n");
 

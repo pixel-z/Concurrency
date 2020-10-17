@@ -3,13 +3,15 @@
 // If a student is assigned a vaczone
 void assignedStud(Student *stud, Zone *z)
 {
+    // *************************** decrement studentCount when positive antibody test **************************
     printf(STUDENT_COLOR "Student %d\033[0m \t assigned slot on Vaccination " ZONE_COLOR "Zone %d\e[0m and waiting to be vaccinated\n",stud->id,z->id);
-    // connection b/w stud & zone to be done
+    
 }
 
 // continuously check if zone is there to be allocated for waiting student
 void waitingStud(Student *stud)
 {
+    printf( STUDENT_COLOR "Student %d\033[0m\t is waiting to be allocated a slot on a Vaccination Zone\n",stud->id);
     int flag=0;
     while (flag==0)
     {
@@ -42,7 +44,6 @@ void* initStud(void *inp)
     printf( STUDENT_COLOR "Student %d\033[0m\t initialized with arrivalTime %d\n",stud->id,stud->arrivalTime);
     sleep(stud->arrivalTime);
     printf( STUDENT_COLOR "Student %d\033[0m\t arrived for its %d round of Vaccination\n",stud->id,stud->vacc_count);
-    printf( STUDENT_COLOR "Student %d\033[0m\t is waiting to be allocated a slot on a Vaccination Zone\n",stud->id);
 
     waitingStud(stud);
 

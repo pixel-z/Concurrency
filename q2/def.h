@@ -15,16 +15,17 @@
 
 typedef struct Company{
     int id;
-    double prob;    // prob of success of vaccine
-    int ready;      // 1 to start new production batch
+    double prob;       // prob of success of vaccine
     int batches;       // no of batches company makes (changes every time)
+    int vaccInBatch;   // no of vaccines in each batch
+    int ready;         // 0=preparing drugs, 1=completed(idol)
     pthread_t tid;
     pthread_mutex_t mutex;
 } Company;
 
 typedef struct Zone{
     int id;
-    int ready;   // 1=ready for new phase of students, else 0
+    int ready;          // 1=ready for new phase of students, else 0
     int slot_left;      // initially some random val (add student = slot_left-1)
     pthread_t tid;
     pthread_mutex_t mutex;
@@ -32,7 +33,7 @@ typedef struct Zone{
 
 typedef struct Student{
     int id;
-    int vacc_count; // no of times vaccinated
+    int vacc_count;     // no of times vaccinated
     int arrivalTime;
     pthread_t tid;
 } Student;
