@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <semaphore.h>
-
+// #include <signal.h>
 #define MAXN 100005
 
 #define COMPANY_COLOR "\033[0;36m"
@@ -18,7 +18,7 @@ typedef struct Company{
     double prob;       // prob of success of vaccine
     int batches;       // no of batches company makes (changes every time)
     int vaccInBatch;   // no of vaccines in each batch
-    int ready;         // 0=preparing drugs, 1=completed(idol)
+    // int ready;         // 0=preparing drugs, 1=completed(idol)
     pthread_t tid;
     pthread_mutex_t mutex;
 } Company;
@@ -27,6 +27,7 @@ typedef struct Zone{
     int id;
     int ready;          // 1=ready for new phase of students, else 0
     int slot_left;      // initially some random val (add student = slot_left-1)
+    double prob;       // prob of success of vaccine
     pthread_t tid;
     pthread_mutex_t mutex;
 } Zone;
@@ -44,6 +45,7 @@ Zone zones[MAXN];
 Student students[MAXN];
 
 int pharmaCount, vaccCount, studentCount;
+int studentLeft;        // student who are still left
 int randomInRange(int l, int r);
 
 

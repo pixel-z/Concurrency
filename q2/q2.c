@@ -13,7 +13,8 @@ int main()
     srand(time(0)); // changing random var every session
     printf("Enter pharmaCount, vaccCount, studentCount: ");
     scanf("%d%d%d",&pharmaCount,&vaccCount,&studentCount);
-
+    studentLeft=studentCount;
+    
     if ((pharmaCount<0 || vaccCount<0 || studentCount<0)|| ((pharmaCount == 0 || vaccCount == 0) && studentCount > 0)) {
         printf("Incompatible inputs\n");
         return 1;
@@ -35,7 +36,7 @@ int main()
     for (int i = 0; i < pharmaCount; i++)
     {
         companies[i].id = i+1;
-        companies[i].ready = 1;
+        // companies[i].ready = 1;
         pthread_mutex_init(&companies[i].mutex, NULL);
         pthread_create(&companies[i].tid,NULL,initComp,&companies[i]);
     }
