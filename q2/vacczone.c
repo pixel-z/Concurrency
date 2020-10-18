@@ -21,7 +21,9 @@ void vacc_phase(Zone *zone, Company *comp)
         
         printf(ZONE_COLOR"Zone %d\033[0m\t\t is ready to vaccinate with %d slots\n",comp->id,slots);
         while (zone->slot_left != 0);
-            // wait
+        {
+            // chill
+        }
     }
     printf(ZONE_COLOR"Zone %d\033[0m\t\t has run out of vaccines\n",zone->id);
     pthread_mutex_lock(&zone->mutex);
@@ -43,15 +45,15 @@ void* initZone(void* inp)
             pthread_mutex_lock(&zone[i].mutex);
             if (companies[i].batches>0 /*&& companies[i].ready==1 && zone->ready==0*/)
             {
+                printf(ZONE_COLOR"Zone %d\033[0m\t\t "COMPANY_COLOR"PharmaCompany %d\033[0m delivering a vaccine batch which has success_prob %lf\n",zone->id,companies[i].id,companies[i].prob);
+                printf(ZONE_COLOR"Zone %d\033[0m\t\t "COMPANY_COLOR"PharmaCompany %d\033[0m delivered vaccines, resuming vaccinations now\n",companies[i].id,zone->id);
                 companies[i].batches--;
                 zone->ready = 1;
                 zone->prob = companies[i].prob;
 
-                printf(ZONE_COLOR"Zone %d\033[0m\t\t "COMPANY_COLOR"PharmaCompany %d\033[0m delivering a vaccine batch which has success_prob %lf\n",zone->id,companies[i].id,companies[i].prob);
-                printf(ZONE_COLOR"Zone %d\033[0m\t\t "COMPANY_COLOR"PharmaCompany %d\033[0m delivered vaccines, resuming vaccinations now\n",companies[i].id,zone->id);
-                vacc_phase(zone,&companies[i]);
                 pthread_mutex_unlock(&companies[i].mutex);
                 pthread_mutex_unlock(&zone[i].mutex);
+                vacc_phase(zone,&companies[i]);
                 break;
             }
             pthread_mutex_unlock(&companies[i].mutex);

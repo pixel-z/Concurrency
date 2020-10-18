@@ -14,6 +14,12 @@ void assignedStud(Student *stud, Zone *z)
         printf(STUDENT_COLOR "Student %d\033[0m\t has tested positive for antibodies\n",stud->id);
         stud->id = -1;
         studentLeft--;
+        if (studentLeft == 0)
+        {
+            printf("\nSimulation Over\n");
+            _exit(1);
+        }
+        
         // pthread_kill(pthread_self(), SIGKILL);
     }
     else
@@ -39,6 +45,7 @@ void waitingStud(Student *stud)
     {
         for (int i = 0; i < vaccCount; i++)
         {
+            // printf("\033[0;31m%d %d\n",zones[i].id,zones[i].slot_left);
             pthread_mutex_lock(&zones[i].mutex);
             if (zones[i].ready==1 && zones[i].slot_left>0)
             {

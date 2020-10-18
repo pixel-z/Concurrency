@@ -11,10 +11,10 @@ int randomInRange(int l, int r){
 int main()
 {
     srand(time(0)); // changing random var every session
-    printf("Enter pharmaCount, vaccCount, studentCount: ");
+    printf("Enter pharmaCount, vaccZoneCount, studentCount: ");
     scanf("%d%d%d",&pharmaCount,&vaccCount,&studentCount);
     studentLeft=studentCount;
-    
+
     if ((pharmaCount<0 || vaccCount<0 || studentCount<0)|| ((pharmaCount == 0 || vaccCount == 0) && studentCount > 0)) {
         printf("Incompatible inputs\n");
         return 1;
