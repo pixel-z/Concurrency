@@ -14,7 +14,7 @@ void make_drugs(Company *comp)
 
     sleep(timeTaken);
 
-    printf(COMPANY_COLOR "PharmaCompany %d\033[0m\t prepared %d batches of vaccines with success_prob %lf\n", comp->id,batches,comp->prob);
+    printf(COMPANY_COLOR "PharmaCompany %d\033[0m\t prepared %d batches of %d vaccines each, with success_prob %lf\n", comp->id,batches,capacity,comp->prob);
     // pthread_mutex_unlock(&comp->mutex);
     // pthread_mutex_lock(&comp->mutex);
     // comp->ready=1;

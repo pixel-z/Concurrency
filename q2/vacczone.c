@@ -46,7 +46,7 @@ void* initZone(void* inp)
             if (companies[i].batches>0 /*&& companies[i].ready==1 && zone->ready==0*/)
             {
                 printf(ZONE_COLOR"Zone %d\033[0m\t\t "COMPANY_COLOR"PharmaCompany %d\033[0m delivering a vaccine batch which has success_prob %lf\n",zone->id,companies[i].id,companies[i].prob);
-                printf(ZONE_COLOR"Zone %d\033[0m\t\t "COMPANY_COLOR"PharmaCompany %d\033[0m delivered vaccines, resuming vaccinations now\n",companies[i].id,zone->id);
+                printf(ZONE_COLOR"Zone %d\033[0m\t\t "COMPANY_COLOR"PharmaCompany %d\033[0m delivered vaccines, resuming vaccinations now\n",zone->id,companies[i].id);
                 companies[i].batches--;
                 zone->ready = 1;
                 zone->prob = companies[i].prob;

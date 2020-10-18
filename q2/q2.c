@@ -15,7 +15,7 @@ int main()
     scanf("%d%d%d",&pharmaCount,&vaccCount,&studentCount);
     studentLeft=studentCount;
 
-    if ((pharmaCount<0 || vaccCount<0 || studentCount<0)|| ((pharmaCount == 0 || vaccCount == 0) && studentCount > 0)) {
+    if (pharmaCount<=0 || vaccCount<=0 || studentCount<=0) {
         printf("Incompatible inputs\n");
         return 1;
     }

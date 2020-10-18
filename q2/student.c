@@ -50,6 +50,7 @@ void waitingStud(Student *stud)
             if (zones[i].ready==1 && zones[i].slot_left>0)
             {
                 assignedStud(stud, &zones[i]);
+                sleep(1);
                 zones[i].slot_left--;
                 flag=1;
                 pthread_mutex_unlock(&zones[i].mutex);
