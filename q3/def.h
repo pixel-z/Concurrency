@@ -18,7 +18,7 @@
 #define END "\033[0m"
 
 typedef struct Artist{
-    int id;
+    // int id;
     char name[1000];
     char instrument;          // p=piano,s=singer,etc
     int arrivalTime;
@@ -30,22 +30,22 @@ typedef struct Artist{
     pthread_mutex_t mutex;
 } Artist;
 
-typedef struct Coordinator{
-    int id; // is this needed?
-    pthread_t tid;
-    pthread_mutex_t mutex;
-} Coordinator;
+// typedef struct Coordinator{
+//     int id; // is this needed?
+//     pthread_t tid;
+//     pthread_mutex_t mutex;
+// } Coordinator;
 
 typedef struct Stage{
-    int id; // is this needed?
+    // int id; // is this needed?
     int ready;              // if someone performing=0
-    int musician_ready;     // not used yet
+    // int musician_ready;     // not used yet
     int singer_ready;       // 1=singer can go on stage
     Artist *musician;    // info of musician performing
 } Stage;
 
 Artist artists[1000];
-Coordinator coordinators[1000];
+// Coordinator coordinators[1000];
 Stage acousticStage[1000], electricStage[1000];
 
 int artistCount, coordCount;

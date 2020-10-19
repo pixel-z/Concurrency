@@ -1,7 +1,8 @@
 #include "def.h"
 
 // used for conditional wait (gives waitTime till which to wait)
-struct timespec* getTimeStructSinceEpoch(int extraTime) {
+// https://stackoverflow.com/q/46018295/
+struct timespec* getTimeStruct(int extraTime) {
     struct timespec* st = (struct timespec*)malloc(sizeof(struct timespec*));
 
     clock_gettime(CLOCK_REALTIME, st);
@@ -194,7 +195,7 @@ void *initArtist(void *inp)
     artist->waiting = 1;
 
     // int timeTakenToPerform = randomInRange(t1,t2);
-    artist->st = getTimeStructSinceEpoch(artist->arrivalTime+waitTime);
+    artist->st = getTimeStruct(artist->arrivalTime+waitTime);
     
     allotStage(artist);
     return NULL;
