@@ -25,6 +25,7 @@ void vacc_phase(Zone *zone, Company *comp)
             // chill
         }
     }
+    if(studentLeft!=0)
     printf(ZONE_COLOR"Zone %d\033[0m\t\t has run out of vaccines\n",zone->id);
     pthread_mutex_lock(&zone->mutex);
     zone->ready = 0;
