@@ -156,6 +156,8 @@ void runSorts(long long int n){
 
      struct timespec ts;
 
+     printf("Enter the array: \n");
+
      //getting shared memory
      int *arr = shareMem(sizeof(int)*(n+1));
      for(int i=0;i<n;i++) scanf("%d", arr+i);
@@ -226,6 +228,7 @@ void runSorts(long long int n){
 int main(){
 
      long long int n;
+     printf("Enter size of array to be sorted: ");
      scanf("%lld", &n);
      runSorts(n);
      return 0;
